@@ -13,8 +13,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="310.0" layoutX="143.0" layoutY="56.0" stroke="WHITE" strokeLineJoin="ROUND" strokeType="INSIDE" width="314.0" />
       <Text layoutX="183.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " wrappingWidth="63.21630859375" />
       <Text layoutX="183.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: " wrappingWidth="63.21630859375" />
-      <TextField layoutX="253.0" layoutY="207.0" />
-      <TextField layoutX="253.0" layoutY="162.0" />
+      <TextField fx:id="pass" layoutX="253.0" layoutY="207.0" />
+      <TextField fx:id="user" layoutX="253.0" layoutY="162.0" />
       <Text layoutX="199.0" layoutY="117.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Travel Journal" textAlignment="CENTER" wrappingWidth="202.5">
          <font>
             <Font name="Arial" size="29.0" />

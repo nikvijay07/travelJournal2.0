@@ -24,11 +24,8 @@ public class LoginController {
 
     @FXML
     void loginButton(ActionEvent event) throws IOException {
-        System.out.println("test1");
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
-        System.out.println("test2");
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        System.out.println("test3");
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.main.java.com.example.traveljournal.CreateTripController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.traveljournalv2.CreateTripController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#97afc6" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="341.0" layoutX="157.0" layoutY="30.0" stroke="WHITE" strokeType="INSIDE" width="287.0" />
@@ -16,9 +16,9 @@
             <Font name="Arial" size="30.0" />
          </font>
       </Text>
-      <TextField layoutX="220.0" layoutY="127.0" text="Trip Name" />
-      <TextField layoutX="220.0" layoutY="164.0" text="Start Date" />
-      <TextField layoutX="220.0" layoutY="201.0" text="End Date" />
-      <Button layoutX="262.0" layoutY="250.0" mnemonicParsing="false" text="Create Trip" />
+      <TextField fx:id="tripName" layoutX="220.0" layoutY="127.0" promptText="Trip Name" />
+      <TextField fx:id="startDate" layoutX="220.0" layoutY="164.0" promptText="Start Date" />
+      <TextField fx:id="endDate" layoutX="220.0" layoutY="201.0" promptText="End Date" />
+      <Button layoutX="262.0" layoutY="250.0" mnemonicParsing="false" onAction="#createTripButton" text="Create Trip" />
    </children>
 </AnchorPane>
