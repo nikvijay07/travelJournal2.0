@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#82bff8" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Button layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="55.0" text="Back" />
+      <Text layoutX="178.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Account">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <TextField fx:id="fname" layoutX="225.0" layoutY="119.0" promptText="First Name" />
+      <TextField fx:id="lname" layoutX="225.0" layoutY="160.0" promptText="Last Name" />
+      <TextField fx:id="email" layoutX="225.0" layoutY="241.0" promptText="Email" />
+      <TextField fx:id="pass" layoutX="225.0" layoutY="283.0" promptText="Password" />
+      <TextField fx:id="uname" layoutX="225.0" layoutY="200.0" promptText="Username" />
+      <Text layoutX="212.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator?" />
+      <Button fx:id="create" layoutX="251.0" layoutY="360.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
+      <Button fx:id="no" layoutX="300.0" layoutY="322.0" mnemonicParsing="false" onAction="#adminButton" prefHeight="26.0" prefWidth="39.0" text="No" />
+      <Button fx:id="yes" layoutX="349.0" layoutY="322.0" mnemonicParsing="false" onAction="#adminButton" prefHeight="26.0" prefWidth="39.0" text="Yes" />
    </children>
 </AnchorPane>
