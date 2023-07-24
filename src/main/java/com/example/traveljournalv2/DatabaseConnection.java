@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-    public Connection databaseLink;
+    public static Connection databaseLink;
 
     public static Connection getConnection() {
         String databaseName = "phaseii";
