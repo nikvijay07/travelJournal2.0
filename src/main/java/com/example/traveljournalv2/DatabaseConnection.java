@@ -58,18 +58,21 @@ public class DatabaseConnection {
 
         try {
 
-            PreparedStatement ps = conn.prepareStatement("SELECT Cname, R\n" +
-                    "FROM (SELECT Location_ID, AVG(Rating) AS R\n" +
+            System.out.println("First check");
+
+            PreparedStatement ps = conn.prepareStatement("SELECT Cname, Country, Rating\n" +
+                    "FROM (SELECT Location_ID, AVG(Rating) AS Rating\n" +
                     "FROM Journal_Entry\n" +
                     "WHERE Privacy_Level = \"Public\"\n" +
                     "GROUP BY Location_ID\n" +
-                    "ORDER BY AVG(Rating) DESC) AS J\n" +
-                    "NATURAL JOIN City;\n");
+                    "ORDER BY AVG(Rating) DESC) AS X\n" +
+                    "NATURAL JOIN City;");
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
 
+                System.out.println(rs.getString("City"));
                 list.add(new CityEntries(rs.getString("City"), rs.getString("Country"), rs.getInt("Rating")));
             }
 

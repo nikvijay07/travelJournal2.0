@@ -55,11 +55,17 @@ public class SearchResultController {
 
     @FXML
     void initialize() throws SQLException {
-        cityNameColumn.setCellValueFactory(new PropertyValueFactory<>("City"));
+
+        cityNameColumn.setCellValueFactory(new PropertyValueFactory<>("Cname"));
+        System.out.println("test 1");
 
         countryName.setCellValueFactory(new PropertyValueFactory<>("Country"));
+        System.out.println("test 2");
+
 
         averageRating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        System.out.println("test 1");
+
 
         listC = DatabaseConnection.getCityEntries();
 

@@ -61,12 +61,12 @@ public class ViewMyTripsController {
 
     @FXML
     void initialize() {
-        tripCol.setCellValueFactory(new PropertyValueFactory<>("Trips"));
+//        tripCol.setCellValueFactory(new PropertyValueFactory<>("Trips"));
 
 
-        listM = DatabaseConnection.getEntries();
+//        listM = DatabaseConnection.getEntries();
 
-        table_view.setItems(listM);
+//        table_view.setItems(listM);
     }
 
 }
