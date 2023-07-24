@@ -6,10 +6,10 @@ import java.sql.DriverManager;
 public class DatabaseConnection {
     public Connection databaseLink;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         String databaseName = "phaseii";
         String databaseUser = "root";
-        String databasePassword = "johannes";
+        String databasePassword = "GhazMirz9968!";
 
         String url = "jdbc:mysql://localhost/" + databaseName;
 
