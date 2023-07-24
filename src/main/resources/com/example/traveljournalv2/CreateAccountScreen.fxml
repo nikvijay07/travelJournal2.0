@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.traveljournalv2.CreateAccountScreenController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#82bff8" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Button layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#backButton" prefHeight="26.0" prefWidth="55.0" text="Back" />

@@ -35,8 +35,6 @@ public class LoginController {
     @FXML
     void loginButton(ActionEvent event) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
-
-
         if (login() == "Success") {
             System.out.println("test2");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -48,7 +46,6 @@ public class LoginController {
     }
     @FXML
     String login() throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         String password = pass.getText();
         String username = user.getText();
         String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
