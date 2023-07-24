@@ -56,6 +56,7 @@ public class LoginController {
         if (resultSet.next()) {;
             //String query2 = "SELECT Fname\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
             //resultSet = statement.executeQuery(query2); //update this of course
+            User.username = resultSet.getString(4);
             User.fname = resultSet.getString(2);
             System.out.println(User.fname);
             return "Success";

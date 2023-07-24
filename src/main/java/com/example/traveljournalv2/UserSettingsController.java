@@ -37,12 +37,33 @@ public class UserSettingsController {
     @FXML
     void deleteAccountButton(ActionEvent event) {
 
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+        System.out.println(User.username);
+
+
+
+        String connectQuery = "DELETE FROM Users WHERE Username = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+
+            preparedStatement.setString(6, User.username);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
+    
 
     @FXML
     void updateAccountButton(ActionEvent event) throws SQLException {
         DatabaseConnection ConnectNow = new DatabaseConnection();
         Connection connectDB = ConnectNow.getConnection();
+        System.out.println(User.username);
 
         String fName = firstName.getText().toString();
         String lName = lastName.getText().toString();
