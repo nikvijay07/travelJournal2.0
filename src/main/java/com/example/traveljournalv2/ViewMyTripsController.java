@@ -63,9 +63,12 @@ public class ViewMyTripsController {
     void initialize() {
 //        tripCol.setCellValueFactory(new PropertyValueFactory<>("Trips"));
 
-
 //        listM = DatabaseConnection.getEntries();
 
+//
+//
+//        listM = DatabaseConnection.getEntries();
+//
 //        table_view.setItems(listM);
     }
 
