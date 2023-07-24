@@ -55,18 +55,18 @@ public class CreateCityJournalEntryController {
 
     @FXML
     void saveButton(ActionEvent event) throws SQLException {
-        DatabaseConnection ConnectNow = new DatabaseConnection();
-        Connection connectDB = ConnectNow.getConnection();
-
-
-
-        String connectQuery = "INSERT INTO Journal_Entry (Note, Rating, Date, Privacy_Level, Author_Email, Location_ID) VALUES (?,?,?,?,?,?)";
-        PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
-
-        preparedStatement.setString(1,note.getText());
-        preparedStatement.setString(2,rating.getValue().toString());
-        preparedStatement.setString(3,endDate.getValue().toString());
-        preparedStatement.setString(4,"test@gmail.com");
+//        DatabaseConnection ConnectNow = new DatabaseConnection();
+//        Connection connectDB = ConnectNow.getConnection();
+//
+//
+//
+//        String connectQuery = "INSERT INTO Journal_Entry (Note, Rating, Date, Privacy_Level, Author_Email, Location_ID) VALUES (?,?,?,?,?,?)";
+//        PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+//
+//        preparedStatement.setString(1,note.getText());
+//        preparedStatement.setString(2,rating.getValue().toString());
+//        preparedStatement.setString(3,endDate.getValue().toString());
+//        preparedStatement.setString(4,"test@gmail.com");
 
     }
 

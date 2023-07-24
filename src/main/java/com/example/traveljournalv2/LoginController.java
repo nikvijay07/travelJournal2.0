@@ -55,7 +55,12 @@ public class LoginController {
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
+
         if (resultSet.next()) {;
+            //String query2 = "SELECT Fname\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
+            //resultSet = statement.executeQuery(query2); //update this of course
+            User.fname = resultSet.getString(2);
+            System.out.println(User.fname);
             return "Success";
         } else {
             return "Doesn't Exist";
