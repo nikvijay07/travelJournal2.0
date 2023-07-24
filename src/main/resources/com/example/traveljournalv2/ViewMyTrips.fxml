@@ -8,21 +8,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a6d1fa" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
-      <Text layoutX="189.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View My Trips">
+      <Text layoutX="194.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View My Trips">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <TableView fx:id="trips" layoutX="68.0" layoutY="113.0" prefHeight="200.0" prefWidth="464.0">
+      <TableView fx:id="trips" layoutX="194.0" layoutY="114.0" prefHeight="200.0" prefWidth="212.0">
         <columns>
           <TableColumn prefWidth="463.20001220703125" text="Trips" />
         </columns>
       </TableView>
-      <Button fx:id="allEntries" layoutX="216.0" layoutY="334.0" mnemonicParsing="false" onAction="#Entries" prefHeight="26.0" prefWidth="166.0" text="Show all Entries" />
+      <Button fx:id="allEntries" layoutX="217.0" layoutY="333.0" mnemonicParsing="false" onAction="#Entries" prefHeight="26.0" prefWidth="166.0" text="Show all Entries" />
    </children>
 </AnchorPane>

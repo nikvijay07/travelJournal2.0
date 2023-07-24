@@ -40,7 +40,6 @@ public class DatabaseConnection {
 
             while (rs.next()) {
 
-
                 list.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating")));
             }
 

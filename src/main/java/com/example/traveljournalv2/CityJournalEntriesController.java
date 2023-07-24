@@ -79,10 +79,6 @@ public class CityJournalEntriesController {
         listM = DatabaseConnection.getEntries();
 
         table_view.setItems(listM);
-
-
-
-
     }
 
 }
