@@ -24,9 +24,9 @@
       <TextField fx:id="password" layoutX="230.0" layoutY="219.0" promptText="Password" />
       <ToggleButtonGroup layoutX="265.0" layoutY="257.0" selectionType="SINGLE" />
       <ToggleButtonGroup selectionType="SINGLE" />
-        <ToggleButton fx:id="privatePrivacy" layoutX="314.0" layoutY="253.0" prefHeight="31.0" prefWidth="63.0" text="Private" />
+        <ToggleButton fx:id="privatePrivacy" layoutX="314.0" layoutY="253.0" onAction="#privateButton" prefHeight="31.0" prefWidth="63.0" text="Private" />
       <Button layoutX="253.0" layoutY="296.0" mnemonicParsing="false" onAction="#updateAccountButton" prefHeight="31.0" prefWidth="106.0" text="Update Account" />
       <Button layoutX="251.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteAccountButton" prefHeight="31.0" prefWidth="110.0" text="Delete Account" />
-      <ToggleButton fx:id="publicPrivacy" layoutX="238.0" layoutY="253.0" prefHeight="31.0" prefWidth="63.0" text="Public" />
+      <ToggleButton fx:id="publicPrivacy" layoutX="238.0" layoutY="253.0" onAction="#publicButton" prefHeight="31.0" prefWidth="63.0" text="Public" />
    </children>
 </AnchorPane>
