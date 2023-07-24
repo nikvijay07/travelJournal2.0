@@ -49,10 +49,10 @@ public class CreateAccountScreenController {
 
     }
 
-    @FXML
-    void createAccount(ActionEvent event) {
+//    @FXML
+    //void createAccount(ActionEvent event) {
 
-    }
+   // }
 
 //    @FXML
 //    void initialize() {

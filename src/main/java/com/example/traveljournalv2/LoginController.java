@@ -1,7 +1,13 @@
 package com.example.traveljournalv2;
 
+import java.awt.TextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,14 +27,37 @@ public class LoginController {
     private Scene scene;
     @FXML
     private URL location;
+    @FXML
+    private TextField pass;
+    @FXML
+    private TextField user;
 
     @FXML
-    void loginButton(ActionEvent event) throws IOException {
+    void loginButton(ActionEvent event) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if (login() == "Success") {
+            System.out.println("test2");
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            System.out.println("test3");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+    @FXML
+    String login() throws IOException, SQLException {
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
+        String password = pass.getText();
+        String username = user.getText();
+        String query = "SELECT *\nFROM Users\nWHERE Username = \""+ user +"\" AND Password = \""+pass+"\"";
+        Connection connection = DatabaseConnection.getConnection();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        if (resultSet.next()) {
+            return "Success";
+        } else {
+            return "Doesn't Exist";
+        }
     }
 
     @FXML
