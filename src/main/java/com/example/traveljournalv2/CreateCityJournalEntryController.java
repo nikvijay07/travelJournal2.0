@@ -64,8 +64,8 @@ public class CreateCityJournalEntryController {
         PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
 
         preparedStatement.setString(1,note.getText());
-        preparedStatement.setString(2,rating.getValue().toString());
-        preparedStatement.setString(3,endDate.getValue().toString());
+        preparedStatement.setString(2,rating.getText().toString());
+        preparedStatement.setString(3,cityDate.getValue().toString());
         preparedStatement.setString(4,"test@gmail.com");
 
     }
