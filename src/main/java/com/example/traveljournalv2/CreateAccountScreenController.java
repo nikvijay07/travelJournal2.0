@@ -54,6 +54,8 @@ public class CreateAccountScreenController {
 
     }
 
+}
+
 //    @FXML
 //    void initialize() {
 //        assert create != null : "fx:id=\"create\" was not injected: check your FXML file 'CreateAccountScreen.fxml'.";
