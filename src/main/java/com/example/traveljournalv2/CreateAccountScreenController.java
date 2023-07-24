@@ -11,8 +11,6 @@ import javafx.scene.control.TextField;
 public class CreateAccountScreenController {
 
     @FXML
-
-    @FXML
     private Button create;
 
     @FXML
@@ -40,7 +38,7 @@ public class CreateAccountScreenController {
 
     }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 }
 
 //    @FXML
@@ -57,6 +55,3 @@ public class CreateAccountScreenController {
 //    }
 //
 //}
-=======
-}
->>>>>>> 1b56cdf8c8dacb41574093c52eddfd0ba73ed189
