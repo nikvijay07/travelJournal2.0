@@ -61,6 +61,4 @@ public class HomeScreenController {
 
     }
 
-    public void createJournalEntry(ActionEvent actionEvent) {
-    }
 }

@@ -7,7 +7,7 @@ public class CityJournalEntry {
 
     private int rating;
 
-    public CityJournalEntry(String date, String note, int rating {
+    public CityJournalEntry(String date, String note, int rating) {
         this.date = date;
         this.note = note;
         this.rating = rating;

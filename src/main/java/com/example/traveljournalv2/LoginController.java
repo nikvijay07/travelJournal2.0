@@ -35,6 +35,8 @@ public class LoginController {
     @FXML
     void loginButton(ActionEvent event) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+
+
         if (login() == "Success") {
             System.out.println("test2");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
