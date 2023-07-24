@@ -5,15 +5,10 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class CreateAccountScreenController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button create;
@@ -28,21 +23,10 @@ public class CreateAccountScreenController {
     private TextField lname;
 
     @FXML
-    private Button no;
-
-    @FXML
     private TextField pass;
 
     @FXML
     private TextField uname;
-
-    @FXML
-    private Button yes;
-
-    @FXML
-    void adminButton(ActionEvent event) {
-
-    }
 
     @FXML
     void backButton(ActionEvent event) {
@@ -53,6 +37,9 @@ public class CreateAccountScreenController {
     //void createAccount(ActionEvent event) {
 
    // }
+
+//<<<<<<< HEAD
+}
 
 //    @FXML
 //    void initialize() {
