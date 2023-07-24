@@ -55,9 +55,7 @@ public class UserSettingsController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-    
 
     @FXML
     void updateAccountButton(ActionEvent event) throws SQLException {
@@ -71,13 +69,11 @@ public class UserSettingsController {
         String newPassword = password.getText().toString();
         String privacy;
 
-
         if (privatePrivacy.isSelected()) {
             privacy = "Private";
         } else {
             privacy = "Public";
         }
-
 
         String connectQuery = "UPDATE Users SET Fname = ?, lName = ?, Email = ?, Password = ?, Privacy_Level = ? WHERE Username = ?";
 
@@ -96,9 +92,7 @@ public class UserSettingsController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
     @FXML
     void initialize() {
 
