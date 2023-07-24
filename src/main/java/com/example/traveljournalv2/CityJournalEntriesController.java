@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
 import javafx.stage.Stage;
 
 public class CityJournalEntriesController {
@@ -21,6 +23,18 @@ public class CityJournalEntriesController {
     private Scene scene;
     @FXML
     private URL location;
+
+    @FXML
+    private TreeTableView<?> CityTable;
+
+    @FXML
+    private TreeTableColumn<?, ?> CityDate;
+
+    @FXML
+    private TreeTableColumn<?, ?> CityNote;
+
+    @FXML
+    private TreeTableColumn<?, ?> CityRating;
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
