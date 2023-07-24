@@ -28,9 +28,9 @@ public class LoginController {
     @FXML
     private URL location;
     @FXML
-    private TextField pass;
+    private javafx.scene.control.TextField pass;
     @FXML
-    private TextField user;
+    private javafx.scene.control.TextField user;
 
     @FXML
     void loginButton(ActionEvent event) throws IOException, SQLException {
@@ -49,11 +49,11 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         String password = pass.getText();
         String username = user.getText();
-        String query = "SELECT *\nFROM Users\nWHERE Username = \""+ user +"\" AND Password = \""+pass+"\"";
+        String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
-        if (resultSet.next()) {
+        if (resultSet.next()) {;
             return "Success";
         } else {
             return "Doesn't Exist";
