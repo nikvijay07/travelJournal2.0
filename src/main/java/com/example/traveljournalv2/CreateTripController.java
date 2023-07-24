@@ -57,8 +57,6 @@ public class CreateTripController {
         preparedStatement.setString(4,"test@gmail.com");
 
 
-        System.out.println(endDate.getValue().toString());
-
         try {
             //Statement statement = connectDB.createStatement();
             int queryOutput = preparedStatement.executeUpdate();
