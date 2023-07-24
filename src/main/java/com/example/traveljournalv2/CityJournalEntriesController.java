@@ -1,48 +1,31 @@
 package com.example.traveljournalv2;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
-import javafx.stage.Stage;
+import javafx.scene.control.TableColumn;
 
 public class CityJournalEntriesController {
 
     @FXML
     private ResourceBundle resources;
-    @FXML
-    private Stage stage;
-    @FXML
-    private Scene scene;
+
     @FXML
     private URL location;
 
     @FXML
-    private TreeTableView<?> CityTable;
+    private TableColumn<CityJournalEntry, String> date;
 
     @FXML
-    private TreeTableColumn<?, ?> CityDate;
+    private TableColumn<CityJournalEntry, String> note;
 
     @FXML
-    private TreeTableColumn<?, ?> CityNote;
+    private TableColumn<CityJournalEntry, Integer> rating;
 
     @FXML
-    private TreeTableColumn<?, ?> CityRating;
+    void backButton(ActionEvent event) {
 
-    @FXML
-    void backButton(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     @FXML
@@ -52,6 +35,9 @@ public class CityJournalEntriesController {
 
     @FXML
     void initialize() {
+        assert date != null : "fx:id=\"date\" was not injected: check your FXML file 'CityJournalEntries.fxml'.";
+        assert note != null : "fx:id=\"note\" was not injected: check your FXML file 'CityJournalEntries.fxml'.";
+        assert rating != null : "fx:id=\"rating\" was not injected: check your FXML file 'CityJournalEntries.fxml'.";
 
     }
 
