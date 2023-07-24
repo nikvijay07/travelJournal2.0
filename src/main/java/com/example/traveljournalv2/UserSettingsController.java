@@ -48,7 +48,7 @@ public class UserSettingsController {
         try {
             PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
 
-            preparedStatement.setString(6, User.username);
+            preparedStatement.setString(1, User.username);
 
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Rows affected: " + rowsAffected);

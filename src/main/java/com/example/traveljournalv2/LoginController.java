@@ -58,6 +58,7 @@ public class LoginController {
             //resultSet = statement.executeQuery(query2); //update this of course
             User.username = resultSet.getString(4);
             User.fname = resultSet.getString(2);
+            User.email = resultSet.getString(1);
             System.out.println(User.fname);
             return "Success";
         } else {
