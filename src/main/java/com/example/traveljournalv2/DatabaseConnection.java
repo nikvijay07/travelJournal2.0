@@ -27,6 +27,7 @@ public class DatabaseConnection {
 
         Connection conn = getConnection();
         ObservableList<CityJournalEntry> list = FXCollections.observableArrayList();
+
         try {
 
             PreparedStatement ps = conn.prepareStatement("SELECT Note, Rating, Date\n" +
@@ -42,6 +43,35 @@ public class DatabaseConnection {
 
 
                 list.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating")));
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+
+    }
+
+    public static ObservableList<CityEntries> getCityEntries() throws SQLException {
+
+        Connection conn = getConnection();
+        ObservableList<CityEntries> list = FXCollections.observableArrayList();
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT Cname, R\n" +
+                    "FROM (SELECT Location_ID, AVG(Rating) AS R\n" +
+                    "FROM Journal_Entry\n" +
+                    "WHERE Privacy_Level = \"Public\"\n" +
+                    "GROUP BY Location_ID\n" +
+                    "ORDER BY AVG(Rating) DESC) AS J\n" +
+                    "NATURAL JOIN City;\n");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                list.add(new CityEntries(rs.getString("City"), rs.getString("Country"), rs.getInt("Rating")));
             }
 
         } catch (Exception e) {
