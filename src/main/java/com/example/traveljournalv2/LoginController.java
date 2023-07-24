@@ -56,10 +56,15 @@ public class LoginController {
         if (resultSet.next()) {;
             //String query2 = "SELECT Fname\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
             //resultSet = statement.executeQuery(query2); //update this of course
+<<<<<<< Updated upstream
             User.username = resultSet.getString(4);
             User.fname = resultSet.getString(2);
             User.email = resultSet.getString(1);
             System.out.println(User.fname);
+=======
+            User.email = resultSet.getString("Email");
+            User.fname = resultSet.getString(2);
+>>>>>>> Stashed changes
             return "Success";
         } else {
             return "Doesn't Exist";

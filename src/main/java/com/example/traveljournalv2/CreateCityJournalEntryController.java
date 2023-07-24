@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +46,7 @@ public class CreateCityJournalEntryController {
     @FXML
     private TextField rating;
 
+
     @FXML
     void backButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
@@ -55,17 +58,36 @@ public class CreateCityJournalEntryController {
 
     @FXML
     void saveButton(ActionEvent event) throws SQLException {
+<<<<<<< Updated upstream
 
 
         try {
         DatabaseConnection ConnectNow = new DatabaseConnection();
         Connection connectDB = ConnectNow.getConnection();
 
+=======
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String locationID = null;
+        String privacy = (privacyLevel.isSelected() ? "Public" : "Private");
+
+        String cityName = city.getText();
+        String cityQuery = "SELECT Location_ID FROM City WHERE Cname = '"  + cityName + "'";
+
+        Statement statement = connectDB.createStatement();
+        ResultSet queryOutput = statement.executeQuery(cityQuery);
+
+        if(queryOutput.next()) {
+            locationID = queryOutput.getString("Location_ID");
+        }
+>>>>>>> Stashed changes
 
 
         String connectQuery = "INSERT INTO Journal_Entry (Note, Rating, Date, Privacy_Level, Author_Email, Location_ID) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
 
+<<<<<<< Updated upstream
 
 
         preparedStatement.setString(1,note.getText());
@@ -81,6 +103,30 @@ public class CreateCityJournalEntryController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+=======
+        User.email = "test@gmail.com";
+
+        preparedStatement.setString(1,note.getText());
+        preparedStatement.setString(2,rating.toString());
+        preparedStatement.setString(3,cityDate.getValue().toString());
+        preparedStatement.setString(4,privacy);
+        preparedStatement.setString(5,User.email);
+        preparedStatement.setString(6,locationID);
+
+        System.out.println(preparedStatement.toString());
+
+        try {
+            //Statement statement = connectDB.createStatement();
+            int out = preparedStatement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+
+>>>>>>> Stashed changes
 
     }
 
