@@ -51,6 +51,10 @@ public class HomeScreenController {
         stage.show();
 
     }
+    @FXML
+    void createJournalEntry(ActionEvent event) {
+
+    }
 
     @FXML
     void initialize() {

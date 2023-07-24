@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -17,8 +18,9 @@
          </font>
       </Text>
       <TextField fx:id="tripName" layoutX="220.0" layoutY="127.0" promptText="Trip Name" />
-      <TextField fx:id="startDate" layoutX="220.0" layoutY="164.0" promptText="Start Date" />
-      <TextField fx:id="endDate" layoutX="220.0" layoutY="201.0" promptText="End Date" />
       <Button layoutX="262.0" layoutY="250.0" mnemonicParsing="false" onAction="#createTripButton" text="Create Trip" />
+      <DatePicker fx:id="startDate" layoutX="220.0" layoutY="165.0" prefHeight="26.0" prefWidth="160.0" promptText="Start Date" />
+      <DatePicker fx:id="endDate" layoutX="221.0" layoutY="201.0" prefHeight="26.0" prefWidth="160.0" promptText="End Date" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>
