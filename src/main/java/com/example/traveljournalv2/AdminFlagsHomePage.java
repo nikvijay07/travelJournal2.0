@@ -77,6 +77,7 @@ public class AdminFlagsHomePage {
 
 
         listC = DatabaseConnection.getAdminUserEntries();
+        System.out.println(listC);
 
         trips2.setItems(listC);
     }

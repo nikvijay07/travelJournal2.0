@@ -3,7 +3,7 @@ package com.example.traveljournalv2;
 public class AdminUserEntries {
     private String Flagging_Email;
 
-    private int Flagged_ID;
+    private int Flagged_Journal_ID;
 
     private int Harassment;
 
@@ -17,20 +17,20 @@ public class AdminUserEntries {
         this.Flagging_Email = Flagging_Email;
     }
 
-    public int getFlagged_ID() {
-        return Flagged_ID;
+    public int getFlagged_Journal_ID() {
+        return Flagged_Journal_ID;
     }
 
-    public void setFlagged_ID(int Flagged_ID) {
-        this.Flagged_ID = Flagged_ID;
+    public void setFlagged_Journal_ID(int Flagged_Journal_ID) {
+        this.Flagged_Journal_ID = Flagged_Journal_ID;
     }
 
-    public int getHarrassment() {
+    public int getHarassment() {
         return Harassment;
     }
 
-    public void setHarrassment(int Harrassment) {
-        this.Harassment = Harrassment;
+    public void setHarassment(int Harassment) {
+        this.Harassment = Harassment;
     }
 
     public int getExplicit() {
@@ -52,7 +52,7 @@ public class AdminUserEntries {
 
     public AdminUserEntries(String Flagging_Email, int Flagged_ID, int Harassment, int Explicit, int Topic) {
         this.Flagging_Email = Flagging_Email;
-        this.Flagged_ID = Flagged_ID;
+        this.Flagged_Journal_ID = Flagged_ID;
         this.Harassment = Harassment;
         this.Explicit = Explicit;
         this.Topic = Topic;
