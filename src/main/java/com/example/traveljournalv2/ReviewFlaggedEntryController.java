@@ -2,6 +2,9 @@ package com.example.traveljournalv2;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -53,6 +56,21 @@ public class ReviewFlaggedEntryController {
 
     @FXML
     void clearFlag(ActionEvent event) {
+        int journalID = AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount - 1).getJournalID();
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String connectQuery = "DELETE FROM Flags WHERE Flagged_Journal_ID = " + journalID;
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
