@@ -35,6 +35,9 @@ public class CreateCityJournalEntryController {
     private TextField city;
 
     @FXML
+    private TextField country;
+
+    @FXML
     private DatePicker cityDate;
 
     @FXML
@@ -67,17 +70,42 @@ public class CreateCityJournalEntryController {
             String privacy = (privacyLevel.isSelected() ? "Public" : "Private");
 
             String cityName = city.getText();
-            String cityQuery = "SELECT Location_ID FROM City WHERE Cname = '" + cityName + "'";
+            String countryName = country.getText();
+            String cityQuery = "SELECT Location_ID FROM City WHERE Cname = '" + cityName + "' AND Country = '" + countryName + "';";
 
             Statement statement = connectDB.createStatement();
             ResultSet queryOutput = statement.executeQuery(cityQuery);
 
             if (queryOutput.next()) {
                 locationID = queryOutput.getInt("Location_ID");
+            } else {
+                System.out.println("Location doesn't exist");
+                //working
+                DatabaseConnection connectInsert = new DatabaseConnection();
+                Connection insertdb = connectInsert.getConnection();
+                //System.out.println(User.username);
+
+                String connectQuery = "INSERT INTO City (Cname, Country) VALUES (?, ?)";
+                PreparedStatement preparedStatement = insertdb.prepareStatement(connectQuery);
+
+                preparedStatement.setString(1, cityName); //variation on CreateTripController.java
+                preparedStatement.setString(2, countryName);
+
+                try {
+                    preparedStatement.executeUpdate();
+                    //find new locationID
+                    DatabaseConnection findLocationID = new DatabaseConnection();
+                    Connection locationdb = findLocationID.getConnection();
+                    String locationQuery = "SELECT COUNT(LocationID) FROM City;";
+                    Statement locationStatement = locationdb.createStatement();
+                    ResultSet locationOutput = locationStatement.executeQuery(locationQuery);
+                    locationID = locationOutput.getInt("COUNT(Location_ID");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
             System.out.println(locationID);
-
 
 
             String connectQuery = "INSERT INTO Journal_Entry (Note, Rating, Date, Privacy_Level, Author_Email, Location_ID) VALUES (?,?,?,?,?,?)";
