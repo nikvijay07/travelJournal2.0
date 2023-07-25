@@ -2,6 +2,9 @@ package com.example.traveljournalv2;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,12 @@ public class ReportController {
 
     @FXML
     private ResourceBundle resources;
+
+    public String tupleTopic;
+    public String harrassmentValue;
+
+    public String tupleLanguage;
+
 
     @FXML
     private URL location;
@@ -46,14 +55,35 @@ public class ReportController {
 
     @FXML
     void reportButton(ActionEvent event) {
+        harrassmentValue = harassment.getText();
+        tupleLanguage = expLanguage.getText();
+        tupleTopic = offTopic.getText();
 
+
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+//        String connectQuery = "INSERT INTO Flags\n" +
+//                "VALUES (\"" + User.email + "\", " + Figure out how to get journalID + ", " + harrassmentValue + ", "
+//                + tupleLanguage + ", " + tupleLanguage + ");";
+
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @FXML
+        @FXML
     void initialize() {
-        assert expLanguage != null : "fx:id=\"expLanguage\" was not injected: check your FXML file 'Report.fxml'.";
-        assert harassment != null : "fx:id=\"harassment\" was not injected: check your FXML file 'Report.fxml'.";
-        assert offTopic != null : "fx:id=\"offTopic\" was not injected: check your FXML file 'Report.fxml'.";
+
 
     }
 
