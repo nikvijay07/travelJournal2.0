@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class CityJournalEntriesController {
@@ -58,6 +59,30 @@ public class CityJournalEntriesController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    @FXML
+    void cityClicked(MouseEvent event) throws IOException {
+
+        if (event.getClickCount() == 2) {
+
+            int journalID = 3;
+
+
+
+            Parent root = FXMLLoader.load(getClass().getResource("ViewCityEntry.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+
+
+
+
+
+        }
 
     }
 

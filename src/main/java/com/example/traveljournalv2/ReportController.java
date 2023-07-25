@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,10 +21,10 @@ public class ReportController {
     @FXML
     private ResourceBundle resources;
 
-    public String tupleTopic;
-    public String harrassmentValue;
+    public boolean tupleTopic;
+    public boolean harassmentValue;
 
-    public String tupleLanguage;
+    public boolean tupleLanguage;
 
 
     @FXML
@@ -33,14 +34,17 @@ public class ReportController {
     @FXML
     private Scene scene;
 
-    @FXML
-    private TextField expLanguage;
 
     @FXML
-    private TextField harassment;
+    private CheckBox expLanguage;
 
     @FXML
-    private TextField offTopic;
+    private CheckBox harassmentBox;
+
+    @FXML
+    private CheckBox offTopic;
+
+
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
@@ -55,9 +59,10 @@ public class ReportController {
 
     @FXML
     void reportButton(ActionEvent event) {
-        harrassmentValue = harassment.getText();
-        tupleLanguage = expLanguage.getText();
-        tupleTopic = offTopic.getText();
+
+        harassmentValue = harassmentBox.isSelected();
+        tupleLanguage = expLanguage.isSelected();
+        tupleTopic = offTopic.isSelected();
 
 
         DatabaseConnection ConnectNow = new DatabaseConnection();

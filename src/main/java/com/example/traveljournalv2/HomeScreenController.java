@@ -54,6 +54,24 @@ public class HomeScreenController {
 
 
     @FXML
+    void logoutButton(ActionEvent event) throws IOException {
+
+        User.email = null;
+        User.fname = null;
+        User.pass = null;
+        User.username = null;
+        User.lname = null;
+
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+    @FXML
     void settings(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("UserSettings.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

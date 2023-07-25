@@ -7,10 +7,13 @@ public class CityJournalEntry {
 
     private int rating;
 
-    public CityJournalEntry(String date, String note, int rating) {
+    private int journalID;
+
+    public CityJournalEntry(String date, String note, int rating, int journalID) {
         this.date = date;
         this.note = note;
         this.rating = rating;
+        this.journalID = journalID;
     }
 
     public String getNote() {
@@ -38,5 +41,11 @@ public class CityJournalEntry {
     }
 
 
+    public int getJournalID() {
+        return journalID;
+    }
 
+    public void setJournalID(int journalID) {
+        this.journalID = journalID;
+    }
 }
