@@ -63,7 +63,7 @@ public class CreateCityJournalEntryController {
 
             DatabaseConnection ConnectNow = new DatabaseConnection();
             Connection connectDB = ConnectNow.getConnection();
-            String locationID = null;
+            int locationID = -1; //default
             String privacy = (privacyLevel.isSelected() ? "Public" : "Private");
 
             String cityName = city.getText();
@@ -73,8 +73,10 @@ public class CreateCityJournalEntryController {
             ResultSet queryOutput = statement.executeQuery(cityQuery);
 
             if (queryOutput.next()) {
-                locationID = queryOutput.getString("Location_ID");
+                locationID = queryOutput.getInt("Location_ID");
             }
+
+            System.out.println(locationID);
 
 
 
@@ -86,14 +88,14 @@ public class CreateCityJournalEntryController {
             preparedStatement.setString(3, cityDate.getValue().toString());
             preparedStatement.setString(4, privacy);
             preparedStatement.setString(5, User.email);
-            preparedStatement.setString(6, locationID);
+            preparedStatement.setInt(6, locationID);
 
             System.out.println(preparedStatement.toString());
 
             int out = preparedStatement.executeUpdate();
 
 
-            Parent root = FXMLLoader.load(getClass().getResource("UseHomeScreen.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
