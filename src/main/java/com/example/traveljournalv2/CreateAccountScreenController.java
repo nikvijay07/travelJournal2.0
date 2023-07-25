@@ -79,9 +79,15 @@ public class CreateAccountScreenController {
             }
             System.out.println(query);
             System.out.println("hello");
+
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
+
+            User.email = email1;
+            User.fname = firstname;
+            User.lname = lastname;
+            User.username = username;
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             if (admin.isSelected() == true) {

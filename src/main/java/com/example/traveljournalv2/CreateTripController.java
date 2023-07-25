@@ -60,6 +60,11 @@ public class CreateTripController {
         try {
             //Statement statement = connectDB.createStatement();
             int queryOutput = preparedStatement.executeUpdate();
+            Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
