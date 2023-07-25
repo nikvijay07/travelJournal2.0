@@ -105,7 +105,7 @@ public class AdminFlagsHomePage {
                 throw new RuntimeException(e);
             }
 
-            Parent root = FXMLLoader.load(getClass().getResource("ReviewFlaggedEntryController.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ReviewFlaggedEntry.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
