@@ -2,6 +2,7 @@ package com.example.traveljournalv2;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +48,24 @@ public class ReviewFlaggedEntryController {
     }
 
     @FXML
-    void banUser(ActionEvent event) {
+    void banUser(ActionEvent event) throws IOException, SQLException {
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+        Statement statement = connectDB.createStatement();
+        String aName = User.email;
+        int banID = AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount - 1).getJournalID();
+        System.out.println(banID);
+        String query = "SELECT Author_Email FROM journal_entry where Journal_ID = \""+ banID + "\"";
+
+        ResultSet queryOutput = statement.executeQuery(query);
+        queryOutput.next();
+
+        String banUser = "UPDATE users\nSET Banned_By = \""+ aName +"\" WHERE Email = \""+ queryOutput.getString("Author_Email") +"\"";
+        PreparedStatement myState = connectDB.prepareStatement(banUser);
+        myState.executeUpdate(banUser);
+//        UPDATE Users
+//        SET Banned_By = "admin1@gmail.com"
+//        WHERE Email = "Johannes@gmail.com"
 
     }
 
