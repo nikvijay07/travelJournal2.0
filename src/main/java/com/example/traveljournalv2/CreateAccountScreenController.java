@@ -62,16 +62,17 @@ public class CreateAccountScreenController {
         String email1 = email.getText();
         String firstname = fname.getText();
         String lastname = lname.getText();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String date = formatter.format(new Date());
-        if (password != null && username != null && email1 != null && firstname != null && lastname != null) {
+        System.out.println("test1");
+        if (!password.isEmpty() && !username.isEmpty() && !email1.isEmpty() && !firstname.isEmpty() && !lastname.isEmpty()) {
             String query =
-                "INSERT INTO Users\nVALUES (" + email1 + "," + firstname + "," + lastname + "," + username + "," +
-                    password + "," + date + ", Private, NULL)";
+                "INSERT INTO Users\nVALUES ('" + email1 + "','" + firstname + "','" + lastname + "','" + username + "','" +
+                    password + "','" + date + "', 'Private', NULL)";
             System.out.println(query);
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
