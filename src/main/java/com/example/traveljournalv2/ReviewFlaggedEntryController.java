@@ -53,7 +53,7 @@ public class ReviewFlaggedEntryController {
             PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
             int rowsAffected = preparedStatement.executeUpdate();
             System.out.println("Rows affected: " + rowsAffected);
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,6 +62,22 @@ public class ReviewFlaggedEntryController {
 
     @FXML
     void deleteEntry(ActionEvent event) {
+        int journalID = AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount - 1).getJournalID();
+        clearFlag(event);
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String connectQuery = "DELETE FROM Journal_Entry WHERE Journal_ID = " + journalID;
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
