@@ -16,10 +16,10 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <TextField fx:id="cityText" layoutX="178.0" layoutY="100.0" promptText="City Name..."/>
+      <TextField fx:id="cityText" layoutX="178.0" layoutY="100.0" promptText="City Name..." />
       <Button layoutX="355.0" layoutY="100.0" mnemonicParsing="false" onAction="#searchCityButton" text="Search" />
       <Button layoutX="278.0" layoutY="351.0" mnemonicParsing="false" onAction="#resetButton" text="Reset" />
-      <TableView fx:id="table_view" layoutX="104.0" layoutY="143.0" prefHeight="188.0" prefWidth="372.0">
+      <TableView fx:id="table_view" layoutX="104.0" layoutY="143.0" onMouseClicked="#tupleClicked" prefHeight="188.0" prefWidth="372.0">
         <columns>
           <TableColumn fx:id="cityNameColumn" prefWidth="116.0" text="City" />
           <TableColumn fx:id="countryName" prefWidth="135.0" text="Country" />

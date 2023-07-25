@@ -44,7 +44,7 @@ public class CityJournalEntriesController {
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("SearchResult.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
