@@ -24,5 +24,6 @@
       <Button layoutX="253.0" layoutY="296.0" mnemonicParsing="false" onAction="#updateAccountButton" prefHeight="31.0" prefWidth="106.0" text="Update Account" />
       <Button layoutX="251.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteAccountButton" prefHeight="31.0" prefWidth="110.0" text="Delete Account" />
       <ToggleButton fx:id="privatePrivacy" layoutX="279.0" layoutY="258.0" mnemonicParsing="false" text="Private" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Button" />
    </children>
 </AnchorPane>
