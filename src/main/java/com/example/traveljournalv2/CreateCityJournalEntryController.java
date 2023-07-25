@@ -93,16 +93,19 @@ public class CreateCityJournalEntryController {
             int out = preparedStatement.executeUpdate();
 
 
+            Parent root = FXMLLoader.load(getClass().getResource("UseHomeScreen.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
-
-
-
     }
-
 
 
     @FXML

@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ViewMyTripsController {
@@ -58,6 +59,20 @@ public class ViewMyTripsController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    void clicked(MouseEvent event) throws IOException {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            System.out.println(trips.getSelectionModel().getSelectedItem());
+        }
+
     }
 
     ObservableList<Trips> listM;

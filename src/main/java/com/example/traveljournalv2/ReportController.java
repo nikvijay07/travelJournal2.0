@@ -68,17 +68,16 @@ public class ReportController {
 //                + tupleLanguage + ", " + tupleLanguage + ");";
 
 
-        try {
-            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
-
-
-            int rowsAffected = preparedStatement.executeUpdate();
-            System.out.println("Rows affected: " + rowsAffected);
-
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+//
+//            int rowsAffected = preparedStatement.executeUpdate();
+//            System.out.println("Rows affected: " + rowsAffected);
+//
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
         @FXML

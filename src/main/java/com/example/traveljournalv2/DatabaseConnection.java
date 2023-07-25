@@ -35,7 +35,7 @@ public class DatabaseConnection {
                     "WHERE Location_ID IN\n" +
                     "(SELECT Location_ID\n" +
                     "FROM City\n" +
-                    "WHERE (Cname = \"" + SearchResultController.cityName + "\"" + ")) AND (Privacy_Level = \"Private\");\n");
+                    "WHERE (Cname = \"" + SearchResultController.cityName + "\"" + ")) AND (Privacy_Level = \"Public\");\n");
 
             ResultSet rs = ps.executeQuery();
 
@@ -153,9 +153,7 @@ public class DatabaseConnection {
 
         } catch (Exception e) {
         }
-
         return list;
-
     }
 
 
