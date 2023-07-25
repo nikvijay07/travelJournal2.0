@@ -80,6 +80,28 @@ public class DatabaseConnection {
         return list;
 
     }
+    public static ObservableList<AdminUserEntries> getAdminUserEntries() throws SQLException {
+
+        Connection conn = getConnection();
+        ObservableList<AdminUserEntries> list = FXCollections.observableArrayList();
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT Flagging_Email, Flagged_Journal_ID, Harassment, Explicit, Topic\n" +
+                "FROM Flags\n");
+
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new AdminUserEntries(rs.getString("Flagging_Email"), rs.getInt("Flagged_Journal_ID"), rs.getInt("Harassment"), rs.getInt("Explicit"), rs.getInt("Topic")));
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+
+    }
 
     public static ObservableList<CityEntries> getMyCityEntries() throws SQLException {
 

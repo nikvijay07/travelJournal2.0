@@ -19,11 +19,11 @@
       </Text>
       <TableView fx:id="trips" layoutX="68.0" layoutY="113.0" prefHeight="254.0" prefWidth="463.0">
          <columns>
-            <TableColumn prefWidth="58.4000244140625" text="User" />
-            <TableColumn prefWidth="69.5999755859375" text="City" />
-            <TableColumn prefWidth="103.20001220703125" text="Note" />
-            <TableColumn prefWidth="100.800048828125" text="Reasons" />
-            <TableColumn prefWidth="131.199951171875" text="Flagger" />
+            <TableColumn prefWidth="58.4000244140625" text="Flagging Email" />
+            <TableColumn prefWidth="69.5999755859375" text="Flagging Journal ID" />
+            <TableColumn prefWidth="103.20001220703125" text="Harassment" />
+            <TableColumn prefWidth="100.800048828125" text="Explicit" />
+            <TableColumn prefWidth="131.199951171875" text="Off-Topic" />
          </columns>
       </TableView>
    </children>

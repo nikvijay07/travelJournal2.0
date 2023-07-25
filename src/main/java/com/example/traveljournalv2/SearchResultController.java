@@ -56,8 +56,6 @@ public class SearchResultController {
 
     @FXML
     void tupleClicked(MouseEvent event) throws IOException {
-
-
         if (event.getClickCount() == 2) //Checking double click
         {
             cityName = table_view.getSelectionModel().getSelectedItem().getCname();
