@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -29,6 +31,9 @@ public class SearchResultController {
     private URL location;
 
     @FXML
+    private TextField cityText;
+
+    @FXML
     private TableColumn<CityEntries, Integer> averageRating;
 
     @FXML
@@ -39,6 +44,7 @@ public class SearchResultController {
 
     @FXML
     private TableView<CityEntries> table_view;
+
     @FXML
     private Stage stage;
     @FXML
@@ -59,7 +65,51 @@ public class SearchResultController {
     }
 
     @FXML
-    void searchCityButton(ActionEvent event) {
+    void searchCityButton(ActionEvent event) throws SQLException {
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String searchQuery = "SELECT Cname, Country, Rating\n" +
+                "FROM (SELECT Location_ID, AVG(Rating) AS Rating\n" +
+                "FROM Journal_Entry\n" +
+                "WHERE Privacy_Level = \"Public\"\n" +
+                "GROUP BY Location_ID\n" +
+                "ORDER BY AVG(Rating) DESC) AS X\n" +
+                "NATURAL JOIN City\n" + // Remove the comma here
+                "WHERE Cname = \"" + cityText.getText().toString() + "\";";
+
+        System.out.println("Test 1");
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(searchQuery);
+
+            ResultSet queryOutput = preparedStatement.executeQuery(searchQuery);
+
+            ObservableList<CityEntries> listE = FXCollections.observableArrayList();
+
+            while (queryOutput.next()) {
+                String cityName = queryOutput.getString("Cname");
+                String countryName = queryOutput.getString("Country");
+                int ratingValue = queryOutput.getInt("Rating");
+
+                System.out.println("Test 5");
+
+
+                CityEntries city = new CityEntries(cityName, countryName, ratingValue);
+                listE.add(city);
+            }
+
+            System.out.println("Test 6");
+
+
+            table_view.setItems(listE);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
 
 
     }
