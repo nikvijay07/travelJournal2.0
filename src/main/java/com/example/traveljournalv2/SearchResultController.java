@@ -61,8 +61,8 @@ public class SearchResultController {
     @FXML
     void searchCityButton(ActionEvent event) {
 
-    }
 
+    }
     @FXML
     ObservableList<CityEntries> listC;
 

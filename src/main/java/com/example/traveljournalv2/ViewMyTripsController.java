@@ -1,6 +1,7 @@
 package com.example.traveljournalv2;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -34,7 +35,7 @@ public class ViewMyTripsController {
     private TableColumn<Trips, String> tripCol;
 
     @FXML
-    private TableView<String> table_view;
+    private TableView<Trips> trips;
 
     @FXML
     private Stage stage;
@@ -56,20 +57,15 @@ public class ViewMyTripsController {
         stage.show();
     }
 
-
-    ObservableList<CityJournalEntry> listM;
+    ObservableList<Trips> listM;
 
     @FXML
-    void initialize() {
-//        tripCol.setCellValueFactory(new PropertyValueFactory<>("Trips"));
+    void initialize() throws SQLException {
+        tripCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
 
-//        listM = DatabaseConnection.getEntries();
+        listM = DatabaseConnection.getTrips(User.email);
 
-//
-//
-//        listM = DatabaseConnection.getEntries();
-//
-//        table_view.setItems(listM);
+        trips.setItems(listM);
     }
 
 }

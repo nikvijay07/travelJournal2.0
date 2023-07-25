@@ -6,9 +6,15 @@ public class Trips {
     private String startDate;
     private String endDate;
 
+    public Trips(String name) {
+        this.name = name;
+        startDate = null;
+        endDate = null;
+    }
 
-    public Trips(String date, String startDate, String endDate) {
-        this.name = date;
+
+    public Trips(String name, String startDate, String endDate) {
+        this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
     }

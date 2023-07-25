@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.traveljournalv2.ViewMyTripsController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a6d1fa" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
@@ -19,7 +19,7 @@
       </Text>
       <TableView fx:id="trips" layoutX="194.0" layoutY="114.0" prefHeight="200.0" prefWidth="212.0">
         <columns>
-          <TableColumn prefWidth="463.20001220703125" text="Trips" />
+            <TableColumn fx:id="tripCol" prefWidth="211.0" text="Trips" />
         </columns>
       </TableView>
       <Button fx:id="allEntries" layoutX="217.0" layoutY="333.0" mnemonicParsing="false" onAction="#Entries" prefHeight="26.0" prefWidth="166.0" text="Show all Entries" />

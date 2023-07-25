@@ -81,22 +81,22 @@ public class DatabaseConnection {
 
     }
 
-    public static ObservableList<CityEntries> getTrips() throws SQLException {
+    public static ObservableList<Trips> getTrips(String email) throws SQLException {
 
         Connection conn = getConnection();
-        ObservableList<CityEntries> list = FXCollections.observableArrayList();
+        ObservableList<Trips> list = FXCollections.observableArrayList();
 
         try {
 
-            PreparedStatement ps = conn.prepareStatement("SELECT J.Note, J.Rating, J.Date, J.Privacy_Level, C.Cname, C.Country\n" +
-                    "FROM Journal_Entry as J NATURAL JOIN City AS C, Trip as T\n" +
-                    "WHERE T.Trip_Email = \"test@gmail.com\" AND  J.Author_Email = T.Trip_Email AND J.Date > T.Start_Date AND J.Date < T.End_Date;\n");
+            PreparedStatement ps = conn.prepareStatement("SELECT Name\n" +
+                    "FROM Trip\n" +
+                    "WHERE Trip_Email = '" + email + "';");
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                list.add(new Trips(rs.getString("Name")));
 
-                list.add(new CityEntries(rs.getString("City"), rs.getString("Country"), rs.getInt("Rating")));
             }
 
         } catch (Exception e) {
