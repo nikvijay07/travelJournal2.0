@@ -22,6 +22,7 @@ public class AdminUserEntries {
     }
 
     public void setFlagged_Journal_ID(int Flagged_Journal_ID) {
+
         this.Flagged_Journal_ID = Flagged_Journal_ID;
     }
 

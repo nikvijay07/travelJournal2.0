@@ -1,9 +1,13 @@
 package com.example.traveljournalv2;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,10 +19,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AdminFlagsHomePage {
 
+    public static int tableClickCount;
     @FXML
     private ResourceBundle resources;
 
@@ -50,6 +56,8 @@ public class AdminFlagsHomePage {
     @FXML
     private TableView<AdminUserEntries> trips2;
 
+    public static ObservableList<CityJournalEntry> newList = FXCollections.observableArrayList();
+
     @FXML
     void backButton(ActionEvent event) throws IOException {
         User.email = null;
@@ -63,6 +71,48 @@ public class AdminFlagsHomePage {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+
+
+    @FXML
+    void tableClicked(MouseEvent event) throws IOException {
+
+        if (event.getClickCount() == 2) {
+            DatabaseConnection ConnectNow = new DatabaseConnection();
+            Connection connectDB = ConnectNow.getConnection();
+
+            String query = "SELECT * \n" +
+                    "FROM Journal_Entry NATURAL JOIN City \n" +
+                    "WHERE Journal_ID = ?;";
+
+
+            System.out.println(query);
+
+            try {
+                PreparedStatement ps = connectDB.prepareStatement(query);
+
+                ps.setString(1, Integer.toString(trips2.getSelectionModel().getSelectedItem().getFlagged_Journal_ID()));
+
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    newList.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), rs.getInt("Journal_ID"), rs.getString("Cname")));
+                }
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            Parent root = FXMLLoader.load(getClass().getResource("ReviewFlaggedEntry.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+
     }
     ObservableList<AdminUserEntries> listC;
     @FXML

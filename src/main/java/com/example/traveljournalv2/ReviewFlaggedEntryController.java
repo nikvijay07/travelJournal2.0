@@ -50,6 +50,15 @@ public class ReviewFlaggedEntryController {
     @FXML
     void initialize() {
 
+
+        date.setText(AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount).getDate());
+        note.setText(AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount).getNote());
+        rating.setText(Integer.toString(AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount).getRating()));
+        city.setText(AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount).getCity());
+
+
+        AdminFlagsHomePage.tableClickCount++;
+
     }
 
 }

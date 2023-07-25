@@ -19,10 +19,10 @@
       </Text>
       <TextField fx:id="fname" layoutX="225.0" layoutY="119.0" promptText="First Name" />
       <TextField fx:id="lname" layoutX="225.0" layoutY="160.0" promptText="Last Name" />
+      <TextField fx:id="uname" layoutX="225.0" layoutY="200.0" promptText="Username" />
       <TextField fx:id="email" layoutX="225.0" layoutY="241.0" promptText="Email" />
       <TextField fx:id="pass" layoutX="225.0" layoutY="283.0" promptText="Password" />
-      <TextField fx:id="uname" layoutX="225.0" layoutY="200.0" promptText="Username" />
-      <Button fx:id="create" layoutX="251.0" layoutY="360.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
       <CheckBox fx:id="admin" layoutX="250.0" layoutY="327.0" mnemonicParsing="false" text="Administrator?" />
+      <Button fx:id="create" layoutX="251.0" layoutY="360.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
    </children>
 </AnchorPane>
