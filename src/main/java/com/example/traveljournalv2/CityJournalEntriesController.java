@@ -67,6 +67,10 @@ public class CityJournalEntriesController {
 
         if (event.getClickCount() == 2) {
 
+            int journalID = 3;
+
+
+
             Parent root = FXMLLoader.load(getClass().getResource("ViewCityEntry.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

@@ -41,8 +41,6 @@ public class ViewCityEntryController {
     @FXML
     private TextField rating;
 
-    public static int journalID;
-
     @FXML
     void backButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));

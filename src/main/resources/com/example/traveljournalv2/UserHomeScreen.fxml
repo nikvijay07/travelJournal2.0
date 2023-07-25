@@ -12,7 +12,7 @@
    <children>
       <ButtonBar layoutX="-7.0" prefHeight="40.0" prefWidth="593.0">
         <buttons>
-            <Button mnemonicParsing="false" text="Logout" translateX="-419.0" />
+            <Button mnemonicParsing="false" onAction="#logoutButton" text="Logout" translateX="-419.0" />
           <Button mnemonicParsing="false" onAction="#settings" text="Settings" />
         </buttons>
       </ButtonBar>
