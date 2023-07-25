@@ -55,7 +55,7 @@ public class LoginController {
     String login() throws IOException, SQLException {
         String password = pass.getText();
         String username = user.getText();
-        String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
+        String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\" AND Banned_By IS NULL";
         String queryA = "SELECT *\nFROM Admin\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
