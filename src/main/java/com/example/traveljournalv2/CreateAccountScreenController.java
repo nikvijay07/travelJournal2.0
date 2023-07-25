@@ -68,7 +68,7 @@ public class CreateAccountScreenController {
         if (!password.isEmpty() && !username.isEmpty() && !email1.isEmpty() && !firstname.isEmpty() && !lastname.isEmpty()) {
             String query =
                 "INSERT INTO Users\nVALUES ('" + email1 + "','" + firstname + "','" + lastname + "','" + username + "','" +
-                    password + "','" + date + "', 'Public', NULL)";
+                    password + "','" + date + "', 'Private', NULL)";
             System.out.println(query);
             System.out.println("hello");
             Connection connection = DatabaseConnection.getConnection();
