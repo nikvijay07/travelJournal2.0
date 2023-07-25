@@ -26,6 +26,8 @@ public class CityJournalEntriesController {
 
     Stage stage;
     Scene scene;
+
+    public static int timesClicked = 0;
     @FXML
     private ResourceBundle resources;
 
@@ -73,9 +75,11 @@ public class CityJournalEntriesController {
     @FXML
     void cityClicked(MouseEvent event) throws IOException, SQLException {
 
-        fromJournalEntries = true;
 
         if (event.getClickCount() == 2) {
+
+
+            fromJournalEntries = true;
             System.out.println("Test 2");
 
             journalID = table_view.getSelectionModel().getSelectedItem().getJournalID();
@@ -99,7 +103,7 @@ public class CityJournalEntriesController {
 
                 while (rs.next()) {
                     System.out.println("Test 4");
-                    entryList2.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), journalID));
+                    entryList2.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), journalID, rs.getString("Cname")));
                     System.out.println("Test 6");
 
                 }
