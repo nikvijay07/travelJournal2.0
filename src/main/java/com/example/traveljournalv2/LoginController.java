@@ -34,16 +34,22 @@ public class LoginController {
 
     @FXML
     void loginButton(ActionEvent event) throws IOException, SQLException {
-        Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
-        Parent rootA = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
-        if (login() == "Success") {
+
+        String loginVal = login();
+
+
+        if (loginVal == "Success") {
+            Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
             System.out.println("test2");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             System.out.println("test3");
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } else if (login() == "SuccessA") {
+        } else if (loginVal == "SuccessA") {
+
+
+            Parent rootA = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             System.out.println("test3");
             scene = new Scene(rootA);
@@ -53,6 +59,7 @@ public class LoginController {
     }
     @FXML
     String login() throws IOException, SQLException {
+
         String password = pass.getText();
         String username = user.getText();
         String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\" AND Banned_By IS NULL";
