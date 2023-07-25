@@ -72,7 +72,7 @@ public class ViewCityEntryController {
         date.setText(CityJournalEntriesController.entryList2.get(0).getDate());
         note.setText(CityJournalEntriesController.entryList2.get(0).getNote());
         rating.setText(Integer.toString(CityJournalEntriesController.entryList2.get(0).getRating()));
-        city.setText()
+        city.setText();
 
     } else {
 
