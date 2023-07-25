@@ -94,6 +94,7 @@ public class DatabaseConnection {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+
                 list.add(new AdminUserEntries(rs.getString("Flagging_Email"), rs.getInt("Flagged_Journal_ID"), rs.getInt("Harassment"), rs.getInt("Explicit"), rs.getInt("Topic")));
             }
 

@@ -36,6 +36,7 @@ public class LoginController {
     void loginButton(ActionEvent event) throws IOException, SQLException {
 
         String loginVal = login();
+        System.out.println(loginVal);
 
 
         if (loginVal == "Success") {
@@ -64,6 +65,7 @@ public class LoginController {
         String username = user.getText();
         String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\" AND Banned_By IS NULL";
         String queryA = "SELECT *\nFROM Admin\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
+        System.out.println(queryA);
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -79,8 +81,11 @@ public class LoginController {
             User.fname = resultSet.getString(2);
             return "Success";
         } else {
+            System.out.println("out");
             ResultSet resultSetA = statement.executeQuery(queryA);
+
             if (resultSetA.next()) {
+                System.out.println("test");
                 User.username = resultSetA.getString(4);
                 User.fname = resultSetA.getString(2);
                 User.email = resultSetA.getString(1);

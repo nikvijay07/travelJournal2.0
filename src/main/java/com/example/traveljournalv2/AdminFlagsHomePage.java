@@ -36,21 +36,19 @@ public class AdminFlagsHomePage {
     private Scene scene;
 
     @FXML
-    private TableColumn<CityEntries, Integer> Flagging_Email_Column;
+    private TableColumn<AdminUserEntries, String> Flagging_Email_Column;
 
     @FXML
-    private TableColumn<CityEntries, String> FlaggedID_Column;
+    private TableColumn<AdminUserEntries, Integer> FlaggedID_Column;
     @FXML
-    private TableColumn<CityEntries, Integer> Harassment_Column;
+    private TableColumn<AdminUserEntries, Integer> Harassment_Column;
 
     @FXML
-    private TableColumn<CityEntries, Integer> Explicit_Column;
+    private TableColumn<AdminUserEntries, Integer> Explicit_Column;
     @FXML
-    private TableColumn<CityEntries, Integer> Topic_Column;
-
-
+    private TableColumn<AdminUserEntries, Integer> Topic_Column;
     @FXML
-    private TableView<AdminUserEntries> table_view;
+    private TableView<AdminUserEntries> trips2;
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
@@ -80,7 +78,7 @@ public class AdminFlagsHomePage {
 
         listC = DatabaseConnection.getAdminUserEntries();
 
-        table_view.setItems(listC);
+        trips2.setItems(listC);
     }
 
 }
