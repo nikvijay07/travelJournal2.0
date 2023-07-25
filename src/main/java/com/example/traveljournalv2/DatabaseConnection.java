@@ -27,10 +27,11 @@ public class DatabaseConnection {
 
         Connection conn = getConnection();
         ObservableList<CityJournalEntry> list = FXCollections.observableArrayList();
+        ObservableList<CityJournalEntry> list2 = FXCollections.observableArrayList();
 
         try {
 
-            PreparedStatement ps = conn.prepareStatement("SELECT Note, Rating, Date\n" +
+            PreparedStatement ps = conn.prepareStatement("SELECT *\n" +
                     "FROM Journal_Entry \n" +
                     "WHERE Location_ID IN\n" +
                     "(SELECT Location_ID\n" +
@@ -40,11 +41,11 @@ public class DatabaseConnection {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 list.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), rs.getInt("Journal_ID")));
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return list;
@@ -84,6 +85,7 @@ public class DatabaseConnection {
 
         Connection conn = getConnection();
         ObservableList<CityEntries> list = FXCollections.observableArrayList();
+
 
         try {
 

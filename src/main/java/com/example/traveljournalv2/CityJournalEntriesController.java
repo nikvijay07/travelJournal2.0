@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,9 @@ public class CityJournalEntriesController {
     @FXML
     private TableColumn<CityJournalEntry, String> date;
 
+    public static ObservableList<CityJournalEntry> entryList2 = FXCollections.observableArrayList();
+
+
     @FXML
     private TableColumn<CityJournalEntry, String> note;
 
@@ -42,6 +46,10 @@ public class CityJournalEntriesController {
 
     @FXML
     private TableView<CityJournalEntry> table_view;
+
+    public static int journalID;
+
+    public static boolean fromJournalEntries = false;
 
     @FXML
     void backButton(ActionEvent event) throws IOException {
@@ -63,47 +71,77 @@ public class CityJournalEntriesController {
     }
 
     @FXML
-    void cityClicked(MouseEvent event) throws IOException {
+    void cityClicked(MouseEvent event) throws IOException, SQLException {
+
+        fromJournalEntries = true;
 
         if (event.getClickCount() == 2) {
+            System.out.println("Test 2");
 
-            int journalID = 3;
+            journalID = table_view.getSelectionModel().getSelectedItem().getJournalID();
+
+            DatabaseConnection ConnectNow = new DatabaseConnection();
+            Connection connectDB = ConnectNow.getConnection();
+
+            String query = "SELECT Rating, Note, Date, Cname\n" +
+                    "FROM Journal_Entry NATURAL JOIN City\n" +
+                    "WHERE Journal_ID = " + journalID + ";";
+
+            System.out.println(query);
+
+            try {
+                PreparedStatement ps = connectDB.prepareStatement(query);
+                ResultSet rs = ps.executeQuery();
 
 
+                //System.out.println(rs.next());
+
+
+                while (rs.next()) {
+                    System.out.println("Test 4");
+                    entryList2.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), journalID));
+                    System.out.println("Test 6");
+
+                }
+
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
             Parent root = FXMLLoader.load(getClass().getResource("ViewCityEntry.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
 
 
-
-
-
-
         }
-
     }
 
     ObservableList<CityJournalEntry> listM;
-    int index = -1;
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement ps = null;
-
 
     @FXML
     void initialize() throws SQLException {
-        rating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
 
-        note.setCellValueFactory(new PropertyValueFactory<>("Note"));
+        try {
 
-        date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+            rating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
 
-        listM = DatabaseConnection.getEntries();
+            note.setCellValueFactory(new PropertyValueFactory<>("Note"));
 
-        table_view.setItems(listM);
+            date.setCellValueFactory(new PropertyValueFactory<>("Date"));
+
+
+            listM = DatabaseConnection.getEntries();
+
+            table_view.setItems(listM);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
 }
