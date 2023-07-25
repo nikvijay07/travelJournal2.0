@@ -51,6 +51,7 @@ public class ReviewFlaggedEntryController {
 
     @FXML
     void banUser(ActionEvent event) {
+        //bubmbumb
 
     }
 
