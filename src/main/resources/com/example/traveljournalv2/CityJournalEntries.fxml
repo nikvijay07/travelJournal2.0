@@ -16,7 +16,7 @@
          </font>
       </Text>
       <Button layoutX="236.0" layoutY="342.0" mnemonicParsing="false" onAction="#createJournalEntryButton" text="Create Journal Entry" />
-      <TableView layoutX="153.0" layoutY="118.0" prefHeight="200.0" prefWidth="294.0">
+      <TableView fx:id="table_view" layoutX="153.0" layoutY="118.0" onMouseClicked="#cityClicked" prefHeight="200.0" prefWidth="294.0">
         <columns>
           <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
           <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />

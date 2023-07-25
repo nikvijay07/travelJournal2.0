@@ -1,6 +1,7 @@
 package com.example.traveljournalv2;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,21 +37,64 @@ public class UserSettingsController {
     @FXML
     void deleteAccountButton(ActionEvent event) {
 
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+        System.out.println(User.username);
+
+
+
+        String connectQuery = "DELETE FROM Users WHERE Username = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+
+            preparedStatement.setString(1, User.username);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
-    void updateAccountButton(ActionEvent event) {
+    void updateAccountButton(ActionEvent event) throws SQLException {
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+        System.out.println(User.username);
 
+        String fName = firstName.getText().toString();
+        String lName = lastName.getText().toString();
+        String newEmail = email.getText().toString();
+        String newPassword = password.getText().toString();
+        String privacy;
+
+        if (privatePrivacy.isSelected()) {
+            privacy = "Private";
+        } else {
+            privacy = "Public";
+        }
+
+        String connectQuery = "UPDATE Users SET Fname = ?, lName = ?, Email = ?, Password = ?, Privacy_Level = ? WHERE Username = ?";
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+
+            preparedStatement.setString(1, fName);
+            preparedStatement.setString(2, lName);
+            preparedStatement.setString(3, newEmail);
+            preparedStatement.setString(4, newPassword);
+            preparedStatement.setString(5, privacy);
+            preparedStatement.setString(6, User.username);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
     @FXML
     void initialize() {
-        assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'UserSettings.fxml'.";
-        assert firstName != null : "fx:id=\"firstName\" was not injected: check your FXML file 'UserSettings.fxml'.";
-        assert lastName != null : "fx:id=\"lastName\" was not injected: check your FXML file 'UserSettings.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'UserSettings.fxml'.";
-        assert privatePrivacy != null : "fx:id=\"privatePrivacy\" was not injected: check your FXML file 'UserSettings.fxml'.";
-        assert publicPrivacy != null : "fx:id=\"publicPrivacy\" was not injected: check your FXML file 'UserSettings.fxml'.";
 
     }
 

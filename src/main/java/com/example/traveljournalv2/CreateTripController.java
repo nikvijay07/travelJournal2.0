@@ -54,7 +54,7 @@ public class CreateTripController {
         preparedStatement.setString(1,tripName.getText());
         preparedStatement.setString(2,startDate.getValue().toString());
         preparedStatement.setString(3,endDate.getValue().toString());
-        preparedStatement.setString(4,"test@gmail.com");
+        preparedStatement.setString(4,User.email);
 
 
         try {

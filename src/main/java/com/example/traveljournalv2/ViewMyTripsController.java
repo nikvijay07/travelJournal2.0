@@ -1,10 +1,23 @@
 package com.example.traveljournalv2;
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 public class ViewMyTripsController {
 
     @FXML
@@ -20,24 +33,57 @@ public class ViewMyTripsController {
     private Button backButton;
 
     @FXML
-    private TableView<?> trips;
+    private TableColumn<Trips, String> tripCol;
 
     @FXML
-    void Entries(ActionEvent event) {
+    private TableView<Trips> trips;
 
+    @FXML
+    private Stage stage;
+    @FXML
+    private Scene scene;
+
+    @FXML
+    void Entries(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("MyTripReport.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void backButton(ActionEvent event) {
-
+    void backButton(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void initialize() {
-        assert allEntries != null : "fx:id=\"allEntries\" was not injected: check your FXML file 'viewMyTrips.fxml'.";
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'viewMyTrips.fxml'.";
-        assert trips != null : "fx:id=\"trips\" was not injected: check your FXML file 'viewMyTrips.fxml'.";
+    void clicked(MouseEvent event) throws IOException {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            System.out.println(trips.getSelectionModel().getSelectedItem());
+        }
 
+    }
+
+    ObservableList<Trips> listM;
+
+    @FXML
+    void initialize() throws SQLException {
+        tripCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
+
+        listM = DatabaseConnection.getTrips(User.email);
+
+        trips.setItems(listM);
     }
 
 }
