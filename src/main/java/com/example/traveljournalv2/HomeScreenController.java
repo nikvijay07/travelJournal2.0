@@ -52,8 +52,12 @@ public class HomeScreenController {
 
     }
     @FXML
-    void createJournalEntry(ActionEvent event) {
-
+    void createJournalEntry(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("CreateCityJournalEntry.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
