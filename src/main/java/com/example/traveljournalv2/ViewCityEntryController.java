@@ -13,6 +13,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import static com.example.traveljournalv2.MyTripReportController.*;
+
+
 public class ViewCityEntryController {
 
     @FXML
@@ -55,10 +58,12 @@ public class ViewCityEntryController {
 
     @FXML
     void initialize() {
-        assert city != null : "fx:id=\"city\" was not injected: check your FXML file 'ViewCityEntry.fxml'.";
-        assert date != null : "fx:id=\"date\" was not injected: check your FXML file 'ViewCityEntry.fxml'.";
-        assert note != null : "fx:id=\"note\" was not injected: check your FXML file 'ViewCityEntry.fxml'.";
-        assert rating != null : "fx:id=\"rating\" was not injected: check your FXML file 'ViewCityEntry.fxml'.";
+
+    city.setText(tupleCity);
+    date.setText(tupleDate);
+    note.setText(tupleNote);
+    rating.setText(Integer.toString(tupleRating));
+
 
     }
 

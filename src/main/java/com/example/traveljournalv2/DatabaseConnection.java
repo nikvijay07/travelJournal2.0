@@ -80,6 +80,34 @@ public class DatabaseConnection {
 
     }
 
+    public static ObservableList<CityEntries> getMyCityEntries() throws SQLException {
+
+        Connection conn = getConnection();
+        ObservableList<CityEntries> list = FXCollections.observableArrayList();
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT Cname, Country, Rating\n" +
+                    "FROM (SELECT Location_ID, AVG(Rating) AS Rating\n" +
+                    "FROM Journal_Entry\n" +
+                    "WHERE Privacy_Level = \"Public\"\n" +
+                    "GROUP BY Location_ID\n" +
+                    "ORDER BY AVG(Rating) DESC) AS X\n" +
+                    "NATURAL JOIN City;");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new CityEntries(rs.getString("Cname"), rs.getString("Country"), rs.getInt("Rating")));
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+
+    }
+
     public static ObservableList<Trips> getTrips(String email) throws SQLException {
 
         Connection conn = getConnection();

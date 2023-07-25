@@ -16,9 +16,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MyTripReportController {
+
+    public static String tupleCity;
+    public static String tupleDate;
+
+    public static String tupleNote;
+
+    public static int tupleRating;
+
+
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -55,6 +65,27 @@ public class MyTripReportController {
     }
 
     ObservableList<JournalEntry> listJ;
+
+
+    @FXML
+    void tuplePressed(MouseEvent event) throws IOException {
+
+
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            tupleCity = trips.getSelectionModel().getSelectedItem().getCity();
+            tupleDate = trips.getSelectionModel().getSelectedItem().getDate();
+            tupleNote = trips.getSelectionModel().getSelectedItem().getNote();
+            tupleRating = trips.getSelectionModel().getSelectedItem().getRating();
+
+            Parent root = FXMLLoader.load(getClass().getResource("ViewCityEntry.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+    }
 
     @FXML
     void initialize() throws SQLException {

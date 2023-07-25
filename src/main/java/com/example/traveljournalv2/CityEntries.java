@@ -3,6 +3,27 @@ package com.example.traveljournalv2;
 public class CityEntries {
     private String cityName;
 
+    private String note;
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    private String date;
+
+
     public String getCname() {
         return cityName;
     }
@@ -35,5 +56,14 @@ public class CityEntries {
         this.cityName = cityName;
         this.countryName = countryName;
         this.rating = rating;
+    }
+
+
+    public CityEntries(String cityName, String countryName, int rating, String date, String note) {
+        this.cityName = cityName;
+        this.countryName = countryName;
+        this.rating = rating;
+        this.date = date;
+        this.note = note;
     }
 }
