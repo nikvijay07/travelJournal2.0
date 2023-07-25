@@ -2,6 +2,8 @@ package com.example.traveljournalv2;
 
 public class CityJournalEntry {
 
+    private String city;
+
     private String note;
     private String date;
 
@@ -9,18 +11,14 @@ public class CityJournalEntry {
 
     private int journalID;
 
-    public CityJournalEntry(String date, String note, int rating, int journalID) {
+    public CityJournalEntry(String date, String note, int rating, int journalID, String city) {
         this.date = date;
         this.note = note;
         this.rating = rating;
         this.journalID = journalID;
+        this.city = city;
     }
 
-    public CityJournalEntry(String date, String note, int rating) {
-        this.date = date;
-        this.note = note;
-        this.rating = rating;
-    }
 
     public String getNote() {
         return note;
@@ -44,6 +42,14 @@ public class CityJournalEntry {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
 

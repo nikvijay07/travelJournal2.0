@@ -32,7 +32,7 @@ public class DatabaseConnection {
         try {
 
             PreparedStatement ps = conn.prepareStatement("SELECT *\n" +
-                    "FROM Journal_Entry \n" +
+                    "FROM Journal_Entry NATURAL JOIN City\n" +
                     "WHERE Location_ID IN\n" +
                     "(SELECT Location_ID\n" +
                     "FROM City\n" +
@@ -40,8 +40,9 @@ public class DatabaseConnection {
 
             ResultSet rs = ps.executeQuery();
 
+
             while (rs.next()) {
-                list.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), rs.getInt("Journal_ID")));
+                list.add(new CityJournalEntry(rs.getString("Date"), rs.getString("Note"), rs.getInt("Rating"), rs.getInt("Journal_ID"), rs.getString("Cname")));
             }
 
         } catch (SQLException e) {

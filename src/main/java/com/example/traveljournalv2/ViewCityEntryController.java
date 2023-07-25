@@ -54,13 +54,11 @@ public class ViewCityEntryController {
     @FXML
     void reportButton(ActionEvent event) throws IOException {
 
-
-        Parent root = FXMLLoader.load(getClass().getResource("ReportController.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Report.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
 
     }
 
@@ -69,10 +67,15 @@ public class ViewCityEntryController {
 
 
     if (CityJournalEntriesController.fromJournalEntries) {
-        date.setText(CityJournalEntriesController.entryList2.get(0).getDate());
-        note.setText(CityJournalEntriesController.entryList2.get(0).getNote());
-        rating.setText(Integer.toString(CityJournalEntriesController.entryList2.get(0).getRating()));
-      //  city.setText();
+
+        date.setText(CityJournalEntriesController.entryList2.get(CityJournalEntriesController.timesClicked).getDate());
+        note.setText(CityJournalEntriesController.entryList2.get(CityJournalEntriesController.timesClicked).getNote());
+        rating.setText(Integer.toString(CityJournalEntriesController.entryList2.get(CityJournalEntriesController.timesClicked).getRating()));
+        city.setText(CityJournalEntriesController.entryList2.get(CityJournalEntriesController.timesClicked).getCity());
+
+        CityJournalEntriesController.fromJournalEntries = false;
+        CityJournalEntriesController.timesClicked++;
+
 
     } else {
 

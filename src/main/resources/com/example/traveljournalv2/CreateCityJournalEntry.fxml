@@ -21,9 +21,10 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="rating" layoutX="278.0" layoutY="153.0" prefHeight="26.0" prefWidth="69.0" promptText="Rating" />
+      <TextField fx:id="rating" layoutX="334.0" layoutY="153.0" prefHeight="26.0" prefWidth="69.0" promptText="Rating" />
       <Button layoutX="287.0" layoutY="353.0" mnemonicParsing="false" onAction="#saveButton" text="Save" />
       <CheckBox fx:id="privacyLevel" layoutX="281.0" layoutY="320.0" mnemonicParsing="false" text="Public" />
       <DatePicker fx:id="cityDate" layoutX="334.0" layoutY="117.0" prefHeight="26.0" prefWidth="108.0" promptText="Date" />
+      <TextField fx:id="country" layoutX="192.0" layoutY="153.0" prefHeight="26.0" prefWidth="101.0" promptText="Country" />
    </children>
 </AnchorPane>
