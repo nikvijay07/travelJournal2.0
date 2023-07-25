@@ -78,6 +78,9 @@ public class MyTripReportController {
             tupleNote = trips.getSelectionModel().getSelectedItem().getNote();
             tupleRating = trips.getSelectionModel().getSelectedItem().getRating();
 
+            System.out.println("tupleCity: "+ tupleCity);
+            System.out.println("hello");
+
             Parent root = FXMLLoader.load(getClass().getResource("ViewCityEntry.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -100,12 +103,15 @@ public class MyTripReportController {
 
         tRating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
 
+        //ADD: if some boolean is 1, use the generic function, else, use the specific trip method
+        if (ViewMyTripsController.specTrip) {
+            listJ = DatabaseConnection.getUserJournalEntriesTrip(User.email);
+        } else {
+            listJ = DatabaseConnection.getUserJournalEntries(User.email); //method is from DatabaseConnection.java
+        }
 
-        listJ = DatabaseConnection.getUserJournalEntries(User.email);
 
         trips.setItems(listJ);
-
-
 
     }
 }

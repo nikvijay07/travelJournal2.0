@@ -43,8 +43,14 @@ public class ViewMyTripsController {
     @FXML
     private Scene scene;
 
+    static String startDateSpecTrip;
+    static String endDateSpecTrip;
+    static boolean specTrip = false;
+
+
     @FXML
     void Entries(ActionEvent event) throws IOException {
+        specTrip = false;
         Parent root = FXMLLoader.load(getClass().getResource("MyTripReport.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -79,11 +85,41 @@ public class ViewMyTripsController {
 
     @FXML
     void initialize() throws SQLException {
+        //not sure about this, but... so that it just shows all trips
+        specTrip = false;
+
+        //showing data
         tripCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
 
         listM = DatabaseConnection.getTrips(User.email);
 
         trips.setItems(listM);
+    }
+
+    @FXML
+    void tripTuplePressed(MouseEvent event) throws IOException {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            /* Trips newTrip = new Trips(trips.getSelectionModel().getSelectedItem().getName(),
+                    trips.getSelectionModel().getSelectedItem().getStartDate(),
+                    trips.getSelectionModel().getSelectedItem().getEndDate());
+
+             */
+            startDateSpecTrip = trips.getSelectionModel().getSelectedItem().getStartDate();
+            endDateSpecTrip = trips.getSelectionModel().getSelectedItem().getEndDate();
+            specTrip = true;
+
+            System.out.println("When clicked, getStartDate: " + startDateSpecTrip);
+            System.out.println("When clicked, getEndDate: " + endDateSpecTrip);
+
+
+            Parent root = FXMLLoader.load(getClass().getResource("MyTripReport.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
     }
 
 }

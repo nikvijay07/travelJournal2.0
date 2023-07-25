@@ -99,6 +99,7 @@ public class DatabaseConnection {
 
             while (rs.next()) {
                 list.add(new CityEntries(rs.getString("Cname"), rs.getString("Country"), rs.getInt("Rating")));
+                //MIGHT have added too many columns or something... but isn't it just the object? it's null otherwise
             }
 
         } catch (Exception e) {
@@ -115,14 +116,14 @@ public class DatabaseConnection {
 
         try {
 
-            PreparedStatement ps = conn.prepareStatement("SELECT Name\n" +
+            PreparedStatement ps = conn.prepareStatement("SELECT *\n" + //just get everything
                     "FROM Trip\n" +
                     "WHERE Trip_Email = '" + email + "';");
 
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                list.add(new Trips(rs.getString("Name")));
+                list.add(new Trips(rs.getString("Name"), rs.getString("Start_Date"), rs.getString("End_Date"))); //ONE TUPLE
 
             }
 
@@ -134,7 +135,7 @@ public class DatabaseConnection {
     }
 
     public static ObservableList<JournalEntry> getUserJournalEntries(String email) throws SQLException {
-
+        System.out.println("Doing just getUserJournalEntries");
         Connection conn = getConnection();
         ObservableList<JournalEntry> list = FXCollections.observableArrayList();
 
@@ -152,6 +153,35 @@ public class DatabaseConnection {
             }
 
         } catch (Exception e) {
+        }
+        return list;
+    }
+
+    //FOR A SPECIFIC TRIP!!!!
+    public static ObservableList<JournalEntry> getUserJournalEntriesTrip(String email) throws SQLException {
+        //Should this method have a different method signature? more elegant I think
+        System.out.println("Attempting getUserJournalEntriesTrip");
+        System.out.println("startDateSpecificTrip: " + ViewMyTripsController.startDateSpecTrip + "\n endDateSpecificTrip: " + ViewMyTripsController.endDateSpecTrip);
+        Connection conn = getConnection();
+        ObservableList<JournalEntry> list = FXCollections.observableArrayList();
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT J.Note, J.Rating, J.Date, C.Cname, C.Country\n" +
+                    "FROM Journal_Entry AS J NATURAL JOIN City AS C\n" +
+                    "WHERE J.Author_Email = '" + email + "' AND J.Date >= '" + ViewMyTripsController.startDateSpecTrip +
+                    "' AND J.Date <= '" + ViewMyTripsController.endDateSpecTrip + "';"); //not sure what to do about this
+            //maybe fixed the quotes around date?
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new JournalEntry(rs.getString("Cname"), rs.getString("Country"),rs.getString("Date"), rs.getString("Note"),rs.getInt("Rating")));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
     }
