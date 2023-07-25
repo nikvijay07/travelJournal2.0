@@ -58,8 +58,6 @@ public class DatabaseConnection {
 
         try {
 
-            System.out.println("First check");
-
             PreparedStatement ps = conn.prepareStatement("SELECT Cname, Country, Rating\n" +
                     "FROM (SELECT Location_ID, AVG(Rating) AS Rating\n" +
                     "FROM Journal_Entry\n" +
@@ -96,6 +94,31 @@ public class DatabaseConnection {
 
             while (rs.next()) {
                 list.add(new Trips(rs.getString("Name")));
+
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+
+    }
+
+    public static ObservableList<JournalEntry> getUserJournalEntries(String email) throws SQLException {
+
+        Connection conn = getConnection();
+        ObservableList<JournalEntry> list = FXCollections.observableArrayList();
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT J.Note, J.Rating, J.Date, C.Cname, C.Country\n" +
+                    "FROM Journal_Entry AS J NATURAL JOIN City AS C\n" +
+                    "WHERE J.Author_Email = '" + email + "';");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new JournalEntry(rs.getString("Cname"), rs.getString("Country"),rs.getString("Date"), rs.getString("Note"),rs.getInt("Rating")));
 
             }
 
