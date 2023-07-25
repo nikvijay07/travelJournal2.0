@@ -139,9 +139,7 @@ public class SearchResultController {
 
         averageRating.setCellValueFactory(new PropertyValueFactory<>("Rating"));
 
-
         listC = DatabaseConnection.getCityEntries();
-
         table_view.setItems(listC);
 
 
