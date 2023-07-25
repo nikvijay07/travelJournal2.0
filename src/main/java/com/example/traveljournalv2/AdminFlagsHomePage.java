@@ -117,8 +117,8 @@ public class AdminFlagsHomePage {
     ObservableList<AdminUserEntries> listC;
     @FXML
     void initialize() throws SQLException {
-//        assert adminFlags != null : "fx:id=\"adminFlags\" was not injected: check your FXML file 'AdminFlagsHomePage.fxml'.";
-//        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AdminFlagsHomePage.fxml'.";
+        assert adminFlags != null : "fx:id=\"adminFlags\" was not injected: check your FXML file 'AdminFlagsHomePage.fxml'.";
+        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'AdminFlagsHomePage.fxml'.";
         Flagging_Email_Column.setCellValueFactory(new PropertyValueFactory<>("Flagging_Email"));
         FlaggedID_Column.setCellValueFactory(new PropertyValueFactory<>("Flagged_Journal_ID"));
         Harassment_Column.setCellValueFactory(new PropertyValueFactory<>("Harassment"));
@@ -131,5 +131,4 @@ public class AdminFlagsHomePage {
 
         trips2.setItems(listC);
     }
-
 }

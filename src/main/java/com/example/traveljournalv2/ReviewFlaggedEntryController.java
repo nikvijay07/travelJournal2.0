@@ -2,11 +2,13 @@ package com.example.traveljournalv2;
 
 import java.io.IOException;
 import java.net.URL;
+<<<<<<< HEAD
 import java.sql.*;
+=======
+>>>>>>> 364e23faa54d9e5a5c3100b3bac34e386311c9a2
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,21 +35,14 @@ public class ReviewFlaggedEntryController {
 
     @FXML
     private TextField rating;
-    @FXML
-    private Stage stage;
-    @FXML
-    private Scene scene;
 
     @FXML
-    void backButton(ActionEvent event) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+    void backButton(ActionEvent event) {
+
     }
 
     @FXML
+<<<<<<< HEAD
     void banUser(ActionEvent event) throws IOException, SQLException {
         DatabaseConnection ConnectNow = new DatabaseConnection();
         Connection connectDB = ConnectNow.getConnection();
@@ -66,16 +61,50 @@ public class ReviewFlaggedEntryController {
 //        UPDATE Users
 //        SET Banned_By = "admin1@gmail.com"
 //        WHERE Email = "Johannes@gmail.com"
+=======
+    void banUser(ActionEvent event) {
+        //bubmbumb
+>>>>>>> 364e23faa54d9e5a5c3100b3bac34e386311c9a2
 
     }
 
     @FXML
     void clearFlag(ActionEvent event) {
+        int journalID = AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount - 1).getJournalID();
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String connectQuery = "DELETE FROM Flags WHERE Flagged_Journal_ID = " + journalID;
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void deleteEntry(ActionEvent event) {
+        int journalID = AdminFlagsHomePage.newList.get(AdminFlagsHomePage.tableClickCount - 1).getJournalID();
+        clearFlag(event);
+        DatabaseConnection ConnectNow = new DatabaseConnection();
+        Connection connectDB = ConnectNow.getConnection();
+
+        String connectQuery = "DELETE FROM Journal_Entry WHERE Journal_ID = " + journalID;
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
