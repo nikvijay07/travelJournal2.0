@@ -46,6 +46,9 @@ public class CreateAccountScreenController {
     private TextField uname;
 
     @FXML
+    private CheckBox admin;
+
+    @FXML
     void backButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -57,6 +60,7 @@ public class CreateAccountScreenController {
     @FXML
     void createAccount(ActionEvent event) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+        Parent admin1 = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
         String password = pass.getText();
         String username = uname.getText();
         String email1 = email.getText();
@@ -69,6 +73,10 @@ public class CreateAccountScreenController {
             String query =
                 "INSERT INTO Users\nVALUES ('" + email1 + "','" + firstname + "','" + lastname + "','" + username + "','" +
                     password + "','" + date + "', 'Private', NULL)";
+            if (admin.isSelected() == true) {
+                query =  "INSERT INTO Admin\nVALUES ('" + email1 + "','" + firstname + "','" + lastname + "','" + username + "','" +
+                    password + "','" + date + "')";
+            }
             System.out.println(query);
             System.out.println("hello");
             Connection connection = DatabaseConnection.getConnection();
@@ -76,6 +84,9 @@ public class CreateAccountScreenController {
             statement.executeUpdate(query);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);
+            if (admin.isSelected() == true) {
+                scene = new Scene(admin1);
+            }
             stage.setScene(scene);
             stage.show();
         }

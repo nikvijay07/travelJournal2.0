@@ -35,11 +35,18 @@ public class LoginController {
     @FXML
     void loginButton(ActionEvent event) throws IOException, SQLException {
         Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
+        Parent rootA = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
         if (login() == "Success") {
             System.out.println("test2");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             System.out.println("test3");
             scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else if (login() == "SuccessA") {
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            System.out.println("test3");
+            scene = new Scene(rootA);
             stage.setScene(scene);
             stage.show();
         }
@@ -49,6 +56,7 @@ public class LoginController {
         String password = pass.getText();
         String username = user.getText();
         String query = "SELECT *\nFROM Users\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
+        String queryA = "SELECT *\nFROM Admin\nWHERE Username = \""+ username +"\" AND Password = \""+password+"\"";
         Connection connection = DatabaseConnection.getConnection();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -64,6 +72,15 @@ public class LoginController {
             User.fname = resultSet.getString(2);
             return "Success";
         } else {
+            ResultSet resultSetA = statement.executeQuery(queryA);
+            if (resultSetA.next()) {
+                User.username = resultSetA.getString(4);
+                User.fname = resultSetA.getString(2);
+                User.email = resultSetA.getString(1);
+                User.email = resultSetA.getString("Email");
+                User.fname = resultSetA.getString(2);
+                return "SuccessA";
+            }
             return "Doesn't Exist";
         }
     }
