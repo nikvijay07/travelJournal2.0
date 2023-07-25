@@ -16,6 +16,12 @@ public class CityJournalEntry {
         this.journalID = journalID;
     }
 
+    public CityJournalEntry(String date, String note, int rating) {
+        this.date = date;
+        this.note = note;
+        this.rating = rating;
+    }
+
     public String getNote() {
         return note;
     }
