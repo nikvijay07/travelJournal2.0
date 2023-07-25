@@ -2,6 +2,8 @@ package com.example.traveljournalv2;
 
 public class CityJournalEntry {
 
+    private String city;
+
     private String note;
     private String date;
 

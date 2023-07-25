@@ -68,21 +68,25 @@ public class ReportController {
         DatabaseConnection ConnectNow = new DatabaseConnection();
         Connection connectDB = ConnectNow.getConnection();
 
-//        String connectQuery = "INSERT INTO Flags\n" +
-//                "VALUES (\"" + User.email + "\", " + Figure out how to get journalID + ", " + harrassmentValue + ", "
-//                + tupleLanguage + ", " + tupleLanguage + ");";
 
 
-//        try {
-//            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
-//
-//            int rowsAffected = preparedStatement.executeUpdate();
-//            System.out.println("Rows affected: " + rowsAffected);
-//
-//
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        String connectQuery = "INSERT INTO Flags\n" +
+                "VALUES (\"" + User.email + "\", " + CityJournalEntriesController.journalID +  ", " + harassmentValue + ", "
+                + tupleLanguage + ", " + tupleLanguage + ");";
+
+        System.out.println(connectQuery);
+
+
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(connectQuery);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows affected: " + rowsAffected);
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
         @FXML
