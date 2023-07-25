@@ -2,19 +2,15 @@ package com.example.traveljournalv2;
 
 import java.io.IOException;
 import java.net.URL;
-<<<<<<< HEAD
 import java.sql.*;
-=======
->>>>>>> 364e23faa54d9e5a5c3100b3bac34e386311c9a2
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class ReviewFlaggedEntryController {
 
@@ -42,7 +38,6 @@ public class ReviewFlaggedEntryController {
     }
 
     @FXML
-<<<<<<< HEAD
     void banUser(ActionEvent event) throws IOException, SQLException {
         DatabaseConnection ConnectNow = new DatabaseConnection();
         Connection connectDB = ConnectNow.getConnection();
@@ -61,10 +56,6 @@ public class ReviewFlaggedEntryController {
 //        UPDATE Users
 //        SET Banned_By = "admin1@gmail.com"
 //        WHERE Email = "Johannes@gmail.com"
-=======
-    void banUser(ActionEvent event) {
-        //bubmbumb
->>>>>>> 364e23faa54d9e5a5c3100b3bac34e386311c9a2
 
     }
 
