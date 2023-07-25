@@ -70,6 +70,7 @@ public class CreateAccountScreenController {
                 "INSERT INTO Users\nVALUES ('" + email1 + "','" + firstname + "','" + lastname + "','" + username + "','" +
                     password + "','" + date + "', 'Private', NULL)";
             System.out.println(query);
+            System.out.println("hello");
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
