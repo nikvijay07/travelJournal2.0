@@ -61,7 +61,7 @@ public class CreateCityJournalEntryController {
 
     @FXML
     void saveButton(ActionEvent event) throws SQLException {
-        System.out.println("Save button clicked");
+
         try {
 
             DatabaseConnection ConnectNow = new DatabaseConnection();
