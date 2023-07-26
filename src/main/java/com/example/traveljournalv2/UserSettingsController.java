@@ -46,7 +46,7 @@ public class UserSettingsController {
     private Scene scene;
     @FXML
     void backButton(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("AdminFlagsHomePage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserHomeScreen.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
