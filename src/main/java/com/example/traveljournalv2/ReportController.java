@@ -72,7 +72,7 @@ public class ReportController {
 
         String connectQuery = "INSERT INTO Flags\n" +
                 "VALUES (\"" + User.email + "\", " + CityJournalEntriesController.journalID +  ", " + harassmentValue + ", "
-                + tupleLanguage + ", " + tupleLanguage + ");";
+                + tupleLanguage + ", " + tupleTopic + ");";
 
         System.out.println(connectQuery);
 
